@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html th:fragment="html (title, content)" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:replace="${title}">Layout Title</title>
+
+        <style>
+            .fieldError {
+                border-color: red;
+            }
+        </style>
+    </head>
+    <body th:insert="${content}">
+        <h1>Layout Content</h1>
+    </body>
+</html>

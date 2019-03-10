@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: html(~{::title}, ~{::section})}">
+    <head>
+        <title>Contacts</title>
+    </head>
+    <body>
+        <section>
+
+            <h1>Contacts</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Phone</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="contact : ${contacts}">
+                        <td th:text="${{contact.id}}">1</td>
+                        <td th:text="${{contact.phone}}">1234567890</td>
+                        <td th:text="${{contact.name}}">John Doe</td>
+                </tbody>
+            </table>
+
+            <form action="#" th:action="@{/}" th:object="${contact}" method="post">
+                <ul>
+                    <li th:each="e : ${#fields.detailedErrors()}">
+                        <span th:text="${e.fieldName}">The field name</span>
+                        <span th:text="${e.message}">The error message</span>
+                    </li>
+                </ul>
+                <input type="text" th:field="*{phone}" th:errorclass="fieldError" />
+                <input type="text" th:field="*{name}" th:errorclass="fieldError" />
+                <button type="submit">Add new</button>
+            </form>
+
+        </section>
+    </body>
+</html>
